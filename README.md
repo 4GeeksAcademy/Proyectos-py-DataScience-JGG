@@ -1,112 +1,89 @@
-# Data Science Project Boilerplate
-
-This boilerplate is designed to kickstart data science projects by providing a basic setup for database connections, data processing, and machine learning model development. It includes a structured folder organization for your datasets and a set of pre-defined Python packages necessary for most data science tasks.
-
-## Structure
-
-The project is organized as follows:
-
-- **`src/app.py`** → Main Python script where your project will run.
-- **`src/explore.ipynb`** → Notebook for exploration and testing. Once exploration is complete, migrate the clean code to `app.py`.
-- **`src/utils.py`** → Auxiliary functions, such as database connection.
-- **`requirements.txt`** → List of required Python packages.
-- **`models/`** → Will contain your SQLAlchemy model classes.
-- **`data/`** → Stores datasets at different stages:
-  - **`data/raw/`** → Raw data.
-  - **`data/interim/`** → Temporarily transformed data.
-  - **`data/processed/`** → Data ready for analysis.
-
-
-## ⚡ Initial Setup in Codespaces (Recommended)
-
-No manual setup is required, as **Codespaces is automatically configured** with the predefined files created by the academy for you. Just follow these steps:
-
-1. **Wait for the environment to configure automatically**.
-   - All necessary packages and the database will install themselves.
-   - The automatically created `username` and `db_name` are in the **`.env`** file at the root of the project.
-2. **Once Codespaces is ready, you can start working immediately**.
-
-
-## 💻 Local Setup (Only if you can't use Codespaces)
-
-**Prerequisites**
-
-Make sure you have Python 3.11+ installed on your machine. You will also need pip to install the Python packages.
-
-**Installation**
-
-Clone the project repository to your local machine.
+# 📊 Machine Learning & Data Science Projects
 
 Navigate to the project directory and install the required Python packages:
 
-```bash
 pip install -r requirements.txt
-```
 
-**Create a database (if necessary)**
+This repository contains a collection of practical projects and exercises covering core concepts in data science, machine learning, deep learning, natural language processing, and more. Each folder includes clean code, visualizations, and detailed explanations.
 
-Create a new database within the Postgres engine by customizing and executing the following command:
+---
 
-```bash
-$ psql -U postgres -c "DO \$\$ BEGIN 
-    CREATE USER my_user WITH PASSWORD 'my_password'; 
-    CREATE DATABASE my_database OWNER my_user; 
-END \$\$;"
-```
-Connect to the Postgres engine to use your database, manipulate tables, and data:
+## 📁 Project Overview
 
-```bash
-$ psql -U my_user -d my_database
-```
+### 1. [web-scraping](./src/1.web-scraping/)
+Automated data extraction from websites using `BeautifulSoup` and `requests`. HTML content is parsed and structured for further data analysis.
 
-Once inside PSQL, you can create tables, run queries, insert, update, or delete data, and much more!
+### 2. [interacting-api-py](./src/2.interacting-api-py/)
+Demonstrates how to interact with public APIs: sending HTTP requests, parsing JSON responses, and integrating external data sources for analysis.
 
-**Environment Variables**
+### 3. [Primer-EDA](./src/3.Primer-EDA/)
+Initial exploratory data analysis using `pandas`, `matplotlib`, and `seaborn`. Covers missing data, distribution analysis, and variable relationships.
 
-Create a .env file in the root directory of the project to store your environment variables, such as your database connection string:
+### 4. [EDA-Regresion-Logistica](./src/4.EDA-Regresion-Logistica/)
+Exploratory analysis for logistic regression. Preprocessing, feature selection, and visualization for binary classification tasks.
 
-```makefile
-DATABASE_URL="postgresql://<USER>:<PASSWORD>@<HOST>:<PORT>/<DB_NAME>"
+### 4.1. [machine-learning](./src/4.1.machine-learning/)
+General introduction to machine learning with supervised and unsupervised techniques. Includes classification, regression, and clustering using `scikit-learn`.
 
-#example
-DATABASE_URL="postgresql://my_user:my_password@localhost:5432/my_database"
-```
+### 5. [EDA-Regresion-Lineal](./src/5.EDA-Regresion-Lineal/)
+Linear regression-oriented EDA. Examines feature relationships, trends, and suitability for linear modeling.
 
-## Running the Application
+### 6. [EDA-Regresion-Lineal-regularizada](./src/6.EDA-Regresion-Lineal-regularizada/)
+Application of regularized linear regression techniques: Ridge, Lasso, and ElasticNet. Reduces overfitting and highlights important features.
 
-To run the application, execute the app.py script from the root directory of the project:
+### 7. [Decision-tree](./src/7.Decision-tree/)
+Decision tree model for classification. Includes visualization, depth optimization, and analysis of feature importance.
 
-```bash
-python src/app.py
-```
+### 8. [Random-forest](./src/8.Random-forest/)
+Ensemble learning with Random Forests. Used for both classification and regression, with feature importance evaluation and performance comparisons.
 
-## Adding Models
+### 9. [Boosting-algoritms](./src/9.Boosting-algoritms/)
+Implementation and comparison of AdaBoost, Gradient Boosting, and XGBoost. Includes model tuning and learning curve visualizations.
 
-To add SQLAlchemy model classes, create new Python script files within the models/ directory. These classes should be defined according to your database schema.
+### 10. [Naive-Bayes-Algoritm](./src/10.Naive-Bayes-Algoritm/)
+Text classification using the Naive Bayes algorithm. Includes tokenization, text cleaning, and model evaluation.
 
-Example model definition (`models/example_model.py`):
+### 11. [Knearest](./src/11.Knearest/)
+K-Nearest Neighbors for classification. Includes testing of different `k` values and accuracy analysis.
 
-```py
-from sqlalchemy.orm import declarative_base
-from sqlalchemy import String
-from sqlalchemy.orm import Mapped, mapped_column
+### 12. [Kmeans](./src/12.Kmeans/)
+Clustering with K-Means. Includes cluster visualization and evaluation using elbow method and silhouette score.
 
-Base = declarative_base()
+### 13. [Serie-temporalP1](./src/13.Serie-temporalP1/)
+Time series analysis and forecasting. Includes trend and seasonality decomposition, and ARIMA model development.
 
-class ExampleModel(Base):
-    __tablename__ = 'example_table'
-    id: Mapped[int] = mapped_column(primary_key=True)
-    username: Mapped[str] = mapped_column(unique=True)
-```
+### 14. [Deep-learning](./src/14.Deep-learning/)
+Introduction to neural networks with `TensorFlow` and `Keras`. Includes sequential models, activation functions, and dropout regularization.
 
-## Working with Data
+### 15. [Natural-Language-Processing](./src/15.Natural-Language-Processing/)
+Text analysis and NLP applications. Covers text preprocessing, sentiment analysis, vectorization (TF-IDF, Word2Vec), and text classification.
 
-You can place your raw datasets in the data/raw directory, intermediate datasets in data/interim, and processed datasets ready for analysis in data/processed.
+### 16. [Despliegue-Render-Flask](./src/16.ML-WebApp-Flask/)
+Deployment of Flask applications on Render, including `Procfile` setup, Gunicorn usage, and production-ready configuration.
+https://render-kind-wine.onrender.com
 
-To process data, you can modify the app.py script to include your data processing steps, using pandas for data manipulation and analysis.
+### 17. [Despliegue-Render-Streamlit](./src/17.ML-WebApp-Streamlit/)
+Deployment of Streamlit applications on Render, setting dynamic port and `Procfile` for proper app execution.
+https://proyecto-render-streamlit.onrender.com
 
-## Contributors
+---
 
-This template was built as part of the [Data Science and Machine Learning Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning) by 4Geeks Academy by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Learn more about [4Geeks Academy BootCamp programs](https://4geeksacademy.com/us/programs) here.
+## 🧠 Tools & Libraries Used
 
-Other templates and resources like this can be found on the school's GitHub page.
+- Python 3.x
+- pandas, numpy
+- matplotlib, seaborn, plotly
+- scikit-learn
+- TensorFlow, Keras
+- NLTK, spaCy
+- XGBoost, LightGBM
+- BeautifulSoup, requests
+
+---
+
+## 🚀 How to Use
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/your-repo-name.git
+   cd your-repo-name

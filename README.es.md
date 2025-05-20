@@ -1,112 +1,89 @@
-# Plantilla de Proyecto de Ciencia de Datos
-
-Esta plantilla está diseñada para impulsar proyectos de ciencia de datos proporcionando una configuración básica para conexiones de base de datos, procesamiento de datos, y desarrollo de modelos de aprendizaje automático. Incluye una organización estructurada de carpetas para tus conjuntos de datos y un conjunto de paquetes de Python predefinidos necesarios para la mayoría de las tareas de ciencia de datos.
-
-## Estructura
-
-El proyecto está organizado de la siguiente manera:
-
-- **`src/app.py`** → Script principal de Python donde correrá tu proyecto.
-- **`src/explore.ipynb`** → Notebook para exploración y pruebas. Una vez finalizada la exploración, migra el código limpio a `app.py`.
-- **`src/utils.py`** → Funciones auxiliares, como conexión a bases de datos.
-- **`requirements.txt`** → Lista de paquetes de Python necesarios.
-- **`models/`** → Contendrá tus clases de modelos SQLAlchemy.
-- **`data/`** → Almacena los datasets en diferentes etapas:
-  - **`data/raw/`** → Datos sin procesar.
-  - **`data/interim/`** → Datos transformados temporalmente.
-  - **`data/processed/`** → Datos listos para análisis.
-
-
-## ⚡ Configuración Inicial en Codespaces (Recomendado)
-
-No es necesario realizar ninguna configuración manual, ya que **Codespaces se configura automáticamente** con los archivos predefinidos que ha creado la academia para ti. Simplemente sigue estos pasos:
-
-1. **Espera a que el entorno se configure automáticamente**.
-   - Todos los paquetes necesarios y la base de datos se instalarán por sí mismos.
-   - El `username` y `db_name` creados automáticamente están en el archivo **`.env`** en la raíz del proyecto.
-2. **Una vez que Codespaces esté listo, puedes comenzar a trabajar inmediatamente**.
-
-
-## 💻 Configuración en Local (Solo si no puedes usar Codespaces)
-
-**Prerrequisitos**
-
-Asegúrate de tener Python 3.11+ instalado en tu máquina. También necesitarás pip para instalar los paquetes de Python.
-
-**Instalación**
-
-Clona el repositorio del proyecto en tu máquina local.
+# 📊 Proyectos de Machine Learning y Ciencia de Datos
 
 Navega hasta el directorio del proyecto e instala los paquetes de Python requeridos:
 
-```bash
 pip install -r requirements.txt
-```
 
-**Crear una base de datos (si es necesario)**
+Este repositorio contiene una colección de proyectos prácticos y ejercicios enfocados en los conceptos clave de ciencia de datos, aprendizaje automático, aprendizaje profundo y procesamiento de lenguaje natural. Cada carpeta incluye código limpio, visualizaciones y explicaciones detalladas.
 
-Crea una nueva base de datos dentro del motor Postgres personalizando y ejecutando el siguiente comando: 
+---
 
-```bash
-$ psql -U postgres -c "DO \$\$ BEGIN 
-    CREATE USER mi_usuario WITH PASSWORD 'mi_contraseña'; 
-    CREATE DATABASE mi_base_de_datos OWNER mi_usuario; 
-END \$\$;"
-```
-Conéctate al motor Postgres para usar tu base de datos, manipular tablas y datos: 
+## 📁 Descripción de los Proyectos
 
-```bash
-$ psql -U mi_usuario -d mi_base_de_datos
-```
+### 1. [web-scraping](./src/1.web-scraping/)
+Extracción automatizada de datos desde sitios web usando `BeautifulSoup` y `requests`. El contenido HTML es procesado y estructurado para su análisis posterior.
 
-¡Una vez que estés dentro de PSQL podrás crear tablas, hacer consultas, insertar, actualizar o eliminar datos y mucho más!
+### 2. [interacting-api-py](./src/2.interacting-api-py/)
+Demuestra cómo interactuar con APIs públicas: enviar solicitudes HTTP, manejar respuestas JSON e integrar datos externos para análisis.
 
-**Variables de entorno**
+### 3. [Primer-EDA](./src/3.Primer-EDA/)
+Análisis exploratorio de datos utilizando `pandas`, `matplotlib` y `seaborn`. Incluye tratamiento de valores nulos, análisis de distribuciones y relaciones entre variables.
 
-Crea un archivo .env en el directorio raíz del proyecto para almacenar tus variables de entorno, como tu cadena de conexión a la base de datos:
+### 4. [EDA-Regresion-Logistica](./src/4.EDA-Regresion-Logistica/)
+Análisis exploratorio de datos orientado a la regresión logística. Incluye selección de variables, visualización y preparación previa del modelo.
 
-```makefile
-DATABASE_URL="postgresql://<USUARIO>:<CONTRASEÑA>@<HOST>:<PUERTO>/<NOMBRE_BD>"
+### 4.1. [machine-learning](./src/4.1.machine-learning/)
+Introducción general al aprendizaje supervisado y no supervisado. Incluye clasificación, regresión y clustering con ejemplos prácticos usando `scikit-learn`.
 
-#example
-DATABASE_URL="postgresql://mi_usuario:mi_contraseña@localhost:5432/mi_base_de_datos"
-```
+### 5. [EDA-Regresion-Lineal](./src/5.EDA-Regresion-Lineal/)
+Exploración de un conjunto de datos para aplicar modelos de regresión lineal. Se analiza la relación entre variables y se verifica la linealidad.
 
-## Ejecutando la Aplicación
+### 6. [EDA-Regresion-Lineal-regularizada](./src/6.EDA-Regresion-Lineal-regularizada/)
+Aplicación de técnicas de regresión lineal regularizada: Ridge, Lasso y ElasticNet. Útil para reducir el sobreajuste y seleccionar características importantes.
 
-Para ejecutar la aplicación, ejecuta el script app.py desde la raíz del directorio del proyecto:
+### 7. [Decision-tree](./src/7.Decision-tree/)
+Implementación de árboles de decisión para clasificación. Incluye visualización, ajuste de profundidad y análisis de importancia de variables.
 
-```bash
-python src/app.py
-```
+### 8. [Random-forest](./src/8.Random-forest/)
+Modelos de bosque aleatorio para tareas de clasificación y regresión. Evaluación de métricas de rendimiento y análisis de variables más relevantes.
 
-## Añadiendo Modelos
+### 9. [Boosting-algoritms](./src/9.Boosting-algoritms/)
+Comparativa de algoritmos de boosting: AdaBoost, Gradient Boosting y XGBoost. Incluye ajuste de hiperparámetros y visualización del rendimiento.
 
-Para añadir clases de modelos SQLAlchemy, crea nuevos archivos de script de Python dentro del directorio models/. Estas clases deben ser definidas de acuerdo a tu esquema de base de datos.
+### 10. [Naive-Bayes-Algoritm](./src/10.Naive-Bayes-Algoritm/)
+Clasificación de texto usando el algoritmo de Naive Bayes. Incluye limpieza de texto, tokenización y evaluación del modelo.
 
-Definición del modelo de ejemplo (`models/example_model.py`):
+### 11. [Knearest](./src/11.Knearest/)
+Clasificación mediante el algoritmo de vecinos más cercanos (KNN). Análisis del impacto del valor de `k` en la precisión del modelo.
 
-```py
-from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy import String
-from sqlalchemy.orm import Mapped, mapped_column
+### 12. [Kmeans](./src/12.Kmeans/)
+Clustering no supervisado con el algoritmo K-Means. Visualización de los clústeres y evaluación con el método del codo y el coeficiente de silueta.
 
-Base = declarative_base()
+### 13. [Serie-temporalP1](./src/13.Serie-temporalP1/)
+Análisis y modelado de series temporales. Incluye visualización de tendencias, descomposición estacional y modelos ARIMA para predicción.
 
-class ExampleModel(Base):
-    __tablename__ = 'example_table'
-    id: Mapped[int] = mapped_column(primary_key=True)
-    username: Mapped[str] = mapped_column(unique=True)
-```
+### 14. [Deep-learning](./src/14.Deep-learning/)
+Introducción a redes neuronales con `TensorFlow` y `Keras`. Modelos secuenciales, funciones de activación y regularización con dropout.
 
-## Trabajando con Datos
+### 15. [Natural-Language-Processing](./src/15.Natural-Language-Processing/)
+Procesamiento de lenguaje natural (NLP). Incluye limpieza de texto, análisis de sentimientos, vectorización (TF-IDF, Word2Vec) y clasificación de texto.
 
-Puedes colocar tus conjuntos de datos brutos en el directorio data/raw, conjuntos de datos intermedios en data/interim, y los conjuntos de datos procesados listos para el análisis en data/processed.
+### 16. [Despliegue-Render-Flask](./src/16.ML-WebApp-Flask/)
+Despliegue de aplicaciones Flask en Render, incluyendo configuración de `Procfile`, uso de Gunicorn y ajustes necesarios para producción.  
+https://render-kind-wine.onrender.com
 
-Para procesar datos, puedes modificar el script app.py para incluir tus pasos de procesamiento de datos, utilizando pandas para la manipulación y análisis de datos.
+### 17. [Despliegue-Render-Streamlit](./src/17.ML-WebApp-Streamlit/)
+Despliegue de aplicaciones Streamlit en Render, configurando el puerto dinámico y el archivo `Procfile` para ejecutar la app correctamente.  
+https://proyecto-render-streamlit.onrender.com
 
-## Contribuyentes
+---
 
-Esta plantilla fue construida como parte del [Data Science and Machine Learning Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning) de 4Geeks Academy por [Alejandro Sanchez](https://twitter.com/alesanchezr) y muchos otros contribuyentes. Descubre más sobre [los programas BootCamp de 4Geeks Academy](https://4geeksacademy.com/us/programs) aquí.
+## 🧠 Herramientas y Librerías Utilizadas
 
-Otras plantillas y recursos como este se pueden encontrar en la página de GitHub de la escuela.
+- Python 3.x  
+- pandas, numpy  
+- matplotlib, seaborn, plotly  
+- scikit-learn  
+- TensorFlow, Keras  
+- NLTK, spaCy  
+- XGBoost, LightGBM  
+- BeautifulSoup, requests  
+
+---
+
+## 🚀 Cómo usar este repositorio
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/tu-repositorio.git
+   cd tu-repositorio
